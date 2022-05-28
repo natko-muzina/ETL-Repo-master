@@ -1,34 +1,52 @@
-﻿using System;
+﻿using FarmSystem.Test2;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace FarmSystem.Test1
 {
     public class EmydexFarmSystem
     {
+        private readonly IList<IAnimal> animals = new List<IAnimal>();
+
+        public event EventHandler FarmEmptyEvent;
+
         //TEST 1
-        public void Enter(object animal)
+        public void Enter(IAnimal animal)
         {
-            //TODO Modify the code so that we can display the type of animal (cow, sheep etc) 
             //Hold all the animals so it is available for future activities
-            Console.WriteLine("Animal has entered the Emydex farm");
+            animals.Add(animal);
+            Console.WriteLine($"{animal.Name} has entered the Emydex farm");
         }
-     
+
         //TEST 2
         public void MakeNoise()
         {
-            //Test 2 : Modify this method to make the animals talk
-            Console.WriteLine("There are no animals in the farm");
+            foreach (var animal in animals)
+                animal.Talk();
         }
 
         //TEST 3
         public void MilkAnimals()
         {
-            Console.WriteLine("Cannot identify the farm animals which can be milked");
+            foreach (var animal in animals)
+                if (animal is IMilkableAnimal milkable)
+                    milkable.ProduceMilk();
         }
 
         //TEST 4
         public void ReleaseAllAnimals()
         {
-           Console.WriteLine("There are still animals in the farm, farm is not free");
+            foreach (var animal in animals.ToList())
+            {
+                // yup, it's running away
+                animal.Run();
+                animals.Remove(animal);
+                Console.WriteLine($"{animal.Name} has left the farm");
+            }
+
+            if (animals.Count == 0)
+                FarmEmptyEvent?.Invoke(this, EventArgs.Empty);
         }
     }
 }

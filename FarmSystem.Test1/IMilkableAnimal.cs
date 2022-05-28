@@ -1,14 +1,16 @@
-﻿namespace FarmSystem.Test2
+﻿using FarmSystem.Test1;
+
+namespace FarmSystem.Test2
 {
     /// <summary>
     /// Interface which exposes method to milk animals
     /// </summary>
-    public interface IMilkableAnimal
+    public interface IMilkableAnimal : IAnimal
     {
-        #region  Public Methods
+        #region Public Methods
 
         void ProduceMilk();
 
-        #endregion
+        #endregion Public Methods
     }
 }

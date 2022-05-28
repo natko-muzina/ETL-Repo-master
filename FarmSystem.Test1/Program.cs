@@ -1,10 +1,10 @@
-﻿using System;
+﻿using FarmSystem.Test1.Models;
+using System;
 
 namespace FarmSystem.Test1
 {
     internal class Program
     {
-       
         private static void Main(string[] args)
         {
             Excercise1();
@@ -27,25 +27,12 @@ Sheep has entered the farm
             Console.WriteLine("Exercise 1 : Press any key when it is time to open the Farm to animals");
             Console.ReadKey();
             var farm = new EmydexFarmSystem();
-            Cow cow = new Cow();
-            cow.Id = Guid.NewGuid().ToString();
-            cow.NoOfLegs = 4;
-            farm.Enter(cow);
+            
+            farm.Enter(new Cow(null, 4, "Daisy the Cow", null));
+            farm.Enter(new Hen());
+            farm.Enter(new Horse());
+            farm.Enter(new Sheep());
 
-            Hen hen = new Hen();
-            hen.Id = Guid.NewGuid().ToString();
-            cow.NoOfLegs = 4;
-            farm.Enter(hen);
-
-            Horse horse = new Horse();
-            horse.Id = Guid.NewGuid().ToString();
-            horse.NoOfLegs = 4;
-            farm.Enter(horse);
-
-            Sheep sheep = new Sheep();
-            sheep.Id = Guid.NewGuid().ToString();
-            sheep.NoOfLegs = 4;
-            farm.Enter(sheep);
             Console.ReadKey();
         }
 
@@ -71,26 +58,12 @@ Sheep has entered the farm
             Console.WriteLine("Exercise 2 : Press any key to scare the animals in the farm");
             Console.ReadKey();
             var farm = new EmydexFarmSystem();
-            Cow cow = new Cow();
-            cow.Id = Guid.NewGuid().ToString();
-            cow.NoOfLegs = 4;
-            farm.Enter(cow);
 
-            Hen hen = new Hen();
-            hen.Id = Guid.NewGuid().ToString();
-            cow.NoOfLegs = 4;
-            farm.Enter(hen);
+            farm.Enter(new Cow(null, 4, "Daisy the Cow", null));
+            farm.Enter(new Hen());
+            farm.Enter(new Horse());
+            farm.Enter(new Sheep());
 
-            Horse horse = new Horse();
-            horse.Id = Guid.NewGuid().ToString();
-            horse.NoOfLegs = 4;
-            farm.Enter(horse);
-
-            Sheep sheep = new Sheep();
-            sheep.Id = Guid.NewGuid().ToString();
-            sheep.NoOfLegs = 4;
-            farm.Enter(sheep);
-            
             farm.MakeNoise();
             Console.ReadKey();
         }
@@ -116,25 +89,11 @@ Cow was milked!
             Console.WriteLine("Exercise 3 : Press any key when it is time to milk animals");
             Console.ReadKey();
             var farm = new EmydexFarmSystem();
-            Cow cow = new Cow();
-            cow.Id = Guid.NewGuid().ToString();
-            cow.NoOfLegs = 4;
-            farm.Enter(cow);
 
-            Hen hen = new Hen();
-            hen.Id = Guid.NewGuid().ToString();
-            cow.NoOfLegs = 4;
-            farm.Enter(hen);
-
-            Horse horse = new Horse();
-            horse.Id = Guid.NewGuid().ToString();
-            horse.NoOfLegs = 4;
-            farm.Enter(horse);
-
-            Sheep sheep = new Sheep();
-            sheep.Id = Guid.NewGuid().ToString();
-            sheep.NoOfLegs = 4;
-            farm.Enter(sheep);
+            farm.Enter(new Cow(null, 4, "Daisy the Cow", null));
+            farm.Enter(new Hen());
+            farm.Enter(new Horse());
+            farm.Enter(new Sheep());
 
             farm.MilkAnimals();
             Console.ReadKey();
@@ -165,25 +124,12 @@ Emydex Farm is now empty
             Console.WriteLine("Exercise 4: Press any key to free all animals");
             Console.ReadKey();
             var farm = new EmydexFarmSystem();
-            Cow cow = new Cow();
-            cow.Id = Guid.NewGuid().ToString();
-            cow.NoOfLegs = 4;
-            farm.Enter(cow);
+            farm.FarmEmptyEvent += (s, e) => { Console.WriteLine("Emydex Farm is now empty"); };
 
-            Hen hen = new Hen();
-            hen.Id = Guid.NewGuid().ToString();
-            cow.NoOfLegs = 4;
-            farm.Enter(hen);
-
-            Horse horse = new Horse();
-            horse.Id = Guid.NewGuid().ToString();
-            horse.NoOfLegs = 4;
-            farm.Enter(horse);
-
-            Sheep sheep = new Sheep();
-            sheep.Id = Guid.NewGuid().ToString();
-            sheep.NoOfLegs = 4;
-            farm.Enter(sheep);
+            farm.Enter(new Cow(null, 4, "Daisy the Cow", null));
+            farm.Enter(new Hen());
+            farm.Enter(new Horse());
+            farm.Enter(new Sheep());
 
             farm.ReleaseAllAnimals();
             Console.ReadKey();
